@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pretty Healthy — Sip Healthy, Glow Naturally</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-soft: #e8a4b0;
+    --pink-light: #f2c5cd;
+    --pink-pale: #fde8ec;
+    --pink-cream: #fdf5f7;
+    --green-sage: #6b8f71;
+    --green-mid: #4a7057;
+    --green-dark: #2d4a36;
+    --green-light: #a8c5af;
+    --green-pale: #e8f0ea;
+    --cream: #fdf9f5;
+    --cream-warm: #f5ede8;
+    --text-dark: #2c3e35;
+    --text-mid: #5a7564;
+    --text-muted: #8aaa94;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(253,249,245,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(232,164,176,0.2);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: var(--green-dark);
+    line-height: 1;
+  }
+  .nav-logo-text span { color: var(--pink-soft); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-mid);
+    font-size: 14px; font-weight: 600;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green-sage); }
+  .nav-cta {
+    background: var(--green-sage);
+    color: white; border: none;
+    padding: 10px 24px; border-radius: 100px;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer; font-family: 'Nunito', sans-serif;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 90px 5% 60px;
+    gap: 40px;
+    position: relative; overflow: hidden;
+  }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 100px 5% 60px; }
+    .hero-image-wrap { order: -1; }
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 95% 50%, rgba(232,164,176,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 5% 80%, rgba(168,197,175,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-leaf-deco {
+    position: absolute; top: 80px; right: 2%;
+    font-size: 100px; opacity: 0.07; transform: rotate(20deg);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--pink-pale); color: var(--pink-soft);
+    padding: 7px 18px; border-radius: 100px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+    margin-bottom: 28px; border: 1px solid var(--pink-light);
+    text-transform: uppercase;
+  }
+  .hero-badge::before {
+    content: ''; width: 7px; height: 7px;
+    background: var(--pink-soft); border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 700; line-height: 1.08;
+    color: var(--green-dark);
+    margin-bottom: 24px;
+  }
+  h1 em { font-style: italic; color: var(--pink-soft); }
+  h1 .accent { color: var(--green-sage); }
+  .hero-desc {
+    font-size: 16px; color: var(--text-mid);
+    line-height: 1.75; margin-bottom: 38px;
+    max-width: 480px;
+  }
+  .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--green-sage); color: white;
+    padding: 13px 30px; border-radius: 100px;
+    font-size: 15px; font-weight: 600; border: none;
+    cursor: pointer; font-family: 'Nunito', sans-serif;
+    transition: all 0.2s; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107,143,113,0.35); }
+  .btn-secondary {
+    color: var(--pink-soft); font-size: 15px; font-weight: 600;
+    text-decoration: none; display: flex; align-items: center; gap: 8px;
+    border: 2px solid var(--pink-light);
+    padding: 11px 22px; border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--pink-pale); gap: 12px; }
+  .hero-stats {
+    display: flex; gap: 32px; margin-top: 48px;
+    padding-top: 32px; border-top: 1px solid var(--pink-light);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700; color: var(--green-sage);
+    display: block;
+  }
+  .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; font-weight: 500; }
+
+  /* Hero image */
+  .hero-image-wrap {
+    position: relative; display: flex; align-items: center; justify-content: center;
+  }
+  .hero-img-frame {
+    border-radius: 32px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(107,143,113,0.2), 0 0 0 1px rgba(232,164,176,0.3);
+    position: relative;
+    width: 100%; max-width: 560px;
+  }
+  .hero-img-frame img { width: 100%; height: auto; display: block; }
+  .hero-img-badge {
+    position: absolute; bottom: 20px; left: 20px;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(10px);
+    border-radius: 16px; padding: 12px 18px;
+    border: 1px solid rgba(232,164,176,0.3);
+    font-size: 13px; font-weight: 600; color: var(--green-dark);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-img-badge .dot { 
+    width: 8px; height: 8px; border-radius: 50%; 
+    background: var(--green-sage); animation: pulse 2s infinite; 
+  }
+
+  /* ===== ABOUT SECTION ===== */
+  .about-section {
+    padding: 80px 5%;
+    background: var(--green-dark);
+    color: white;
+  }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  @media (max-width: 768px) { .about-inner { grid-template-columns: 1fr; } }
+  .about-tag {
+    font-size: 11px; letter-spacing: 0.12em; font-weight: 600;
+    text-transform: uppercase; color: var(--pink-light);
+    margin-bottom: 16px;
+  }
+  .about-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px); font-weight: 700;
+    line-height: 1.15; margin-bottom: 20px;
+    color: var(--cream);
+  }
+  .about-section h2 em { font-style: italic; color: var(--pink-light); }
+  .about-desc { color: rgba(255,255,255,0.65); font-size: 15px; line-height: 1.75; margin-bottom: 32px; }
+  .about-points { display: flex; flex-direction: column; gap: 16px; }
+  .about-point {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 18px 20px;
+    transition: background 0.2s;
+  }
+  .about-point:hover { background: rgba(255,255,255,0.1); }
+  .about-point-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .about-point-text h4 { font-size: 14px; font-weight: 600; color: var(--cream); margin-bottom: 4px; }
+  .about-point-text p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* ===== MENU SECTION ===== */
+  .menu-section { padding: 100px 5%; background: var(--cream); }
+  .section-tag {
+    font-size: 11px; letter-spacing: 0.12em; font-weight: 600;
+    text-transform: uppercase; color: var(--green-sage);
+    margin-bottom: 14px; display: block;
+  }
+  .menu-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px); font-weight: 700;
+    color: var(--green-dark); line-height: 1.15; margin-bottom: 14px;
+  }
+  .menu-section h2 em { font-style: italic; color: var(--pink-soft); }
+  .section-intro { color: var(--text-muted); font-size: 15px; max-width: 500px; line-height: 1.7; margin-bottom: 48px; font-weight: 500; }
+
+  .menu-tabs {
+    display: flex; gap: 8px; margin-bottom: 36px; flex-wrap: wrap;
+  }
+  .menu-tab {
+    padding: 9px 20px; border-radius: 100px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    border: 2px solid var(--green-light);
+    color: var(--text-mid); background: transparent;
+    font-family: 'Nunito', sans-serif;
+    transition: all 0.2s;
+  }
+  .menu-tab.active, .menu-tab:hover {
+    background: var(--green-sage); color: white; border-color: var(--green-sage);
+  }
+
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 18px;
+  }
+  .food-card {
+    background: white; border-radius: 20px;
+    border: 1px solid rgba(107,143,113,0.15);
+    overflow: hidden; transition: all 0.22s; cursor: pointer;
+  }
+  .food-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(107,143,113,0.15); }
+  .food-card-thumb {
+    height: 120px; display: flex; align-items: center; justify-content: center;
+    font-size: 54px; position: relative;
+  }
+  .food-card-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: var(--green-sage); color: white;
+    padding: 3px 9px; border-radius: 100px; font-size: 11px; font-weight: 600;
+  }
+  .food-card-body { padding: 14px 16px 16px; }
+  .food-card-body h4 { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+  .food-card-body p { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .food-card-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--green-pale);
+  }
+  .food-card-kcal { font-size: 12px; font-weight: 700; color: var(--green-sage); }
+  .food-card-tag {
+    font-size: 10px; font-weight: 600;
+    padding: 2px 8px; border-radius: 100px;
+    background: var(--pink-pale); color: var(--pink-soft);
+  }
+
+  .hidden { display: none !important; }
+
+  /* ===== TRACKER SECTION ===== */
+  .tracker-section { padding: 100px 5%; background: var(--green-pale); }
+  .tracker-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px); font-weight: 700;
+    color: var(--green-dark); margin-bottom: 12px;
+  }
+  .tracker-section h2 em { font-style: italic; color: var(--pink-soft); }
+  .tracker-intro { color: var(--text-muted); font-size: 15px; margin-bottom: 48px; max-width: 580px; line-height: 1.7; font-weight: 500; }
+  
+  .tracker-layout {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start;
+  }
+  @media (max-width: 992px) { .tracker-layout { grid-template-columns: 1fr; } }
+  
+  .tracker-card {
+    background: white; border-radius: 24px; padding: 28px;
+    border: 1px solid rgba(107,143,113,0.2);
+    box-shadow: 0 4px 20px rgba(107,143,113,0.05);
+  }
+  .tracker-title {
+    font-size: 15px; font-weight: 700; color: var(--green-dark);
+    margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 2px solid var(--green-pale); padding-bottom: 10px;
+  }
+  .search-bar { display: flex; gap: 10px; margin-bottom: 18px; }
+  .search-bar input {
+    flex: 1; padding: 11px 16px; border: 1.5px solid var(--green-light);
+    border-radius: 12px; font-size: 14px; font-family: 'Nunito', sans-serif;
+    outline: none; color: var(--text-dark); background: var(--cream);
+    transition: border-color 0.2s;
+  }
+  .search-bar input:focus { border-color: var(--green-sage); }
+  
+  /* Form Kustom Makanan */
+  .custom-food-box {
+    background: var(--pink-cream); border: 1px dashed var(--pink-soft);
+    border-radius: 16px; padding: 16px; margin-bottom: 20px;
+  }
+  .custom-food-box h4 { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .custom-grid-inputs { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  @media (max-width: 576px) { .custom-grid-inputs { grid-template-columns: 1fr; } }
+  .custom-grid-inputs input {
+    padding: 8px 12px; border: 1px solid var(--pink-light); border-radius: 8px;
+    font-size: 12px; font-family: 'Nunito', sans-serif; outline: none; background: white;
+  }
+  .custom-grid-inputs input:focus { border-color: var(--pink-soft); }
+  .btn-add-custom {
+    background: var(--pink-soft); color: white; border: none; padding: 8px 16px;
+    border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;
+    font-family: 'Nunito', sans-serif; transition: background 0.2s; width: 100%; text-align: center;
+  }
+  .btn-add-custom:hover { background: var(--green-sage); }
+
+  /* List item tracker */
+  .food-list-scroll { max-height: 380px; overflow-y: auto; padding-right: 4px; }
+  .food-list-scroll::-webkit-scrollbar { width: 6px; }
+  .food-list-scroll::-webkit-scrollbar-thumb { background: var(--green-light); border-radius: 10px; }
+  .food-list { display: flex; flex-direction: column; gap: 8px; }
+  .food-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border-radius: 12px;
+    border: 1px solid var(--green-light); background: var(--cream);
+    transition: all 0.15s;
+  }
+  .food-item:hover { background: var(--green-pale); border-color: var(--green-sage); transform: translateX(2px); }
+  .food-item-info { display: flex; align-items: center; gap: 12px; }
+  .food-emoji-sm { font-size: 22px; background: white; padding: 4px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+  .food-name { font-size: 13.5px; font-weight: 700; color: var(--text-dark); }
+  .food-macro { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .food-kcal { font-size: 13.5px; font-weight: 700; color: var(--green-sage); }
+  .food-origin-tag { font-size: 9px; font-weight: 600; padding: 1px 6px; border-radius: 100px; background: #e2ebf0; color: #50738c; margin-left: 6px; vertical-align: middle; }
+  .food-origin-tag.custom { background: var(--pink-pale); color: var(--pink-soft); }
+  .add-btn {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: white; border: 1px solid var(--green-light); cursor: pointer;
+    color: var(--green-sage); font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .add-btn:hover { background: var(--green-sage); color: white; border-color: var(--green-sage); }
+
+  /* Progress ring & log */
+  .progress-card {
+    background: white; border-radius: 24px; padding: 28px;
+    border: 1px solid rgba(107,143,113,0.2);
+    display: flex; flex-direction: column; align-items: center;
+    box-shadow: 0 4px 20px rgba(107,143,113,0.05);
+  }
+  .ring-container { position: relative; width: 170px; height: 170px; margin: 14px 0 22px; }
+  .ring-svg { transform: rotate(-90deg); }
+  .ring-bg { fill: none; stroke: var(--pink-pale); stroke-width: 12; }
+  .ring-fill {
+    fill: none; stroke: var(--pink-soft); stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dasharray: 502; stroke-dashoffset: 502;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .ring-center {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .ring-kcal {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700; color: var(--green-dark); line-height: 1;
+  }
+  .ring-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+  .ring-target { font-size: 11px; color: var(--green-sage); }
+  .macro-bars { width: 100%; }
+  .macro-row { margin-bottom: 12px; }
+  .macro-head { display: flex; justify-content: space-between; margin-bottom: 5px; }
+  .macro-name { font-size: 12px; color: var(--text-mid); font-weight: 600; }
+  .macro-val { font-size: 12px; color: var(--text-muted); }
+  .macro-bar-bg { height: 7px; border-radius: 100px; background: var(--green-pale); overflow: hidden; }
+  .macro-bar-fill { height: 100%; border-radius: 100px; transition: width 0.7s ease; }
+  
+  /* Meal Logs */
+  .meal-log { margin-top: 20px; width: 100%; border-top: 1px solid var(--green-pale); padding-top: 16px; }
+  .meal-log-title { font-size: 12.5px; color: var(--text-dark); margin-bottom: 10px; font-weight: 700; display: flex; justify-content: space-between; }
+  .meal-log-clear { font-size: 11px; color: var(--pink-soft); cursor: pointer; background: none; border: none; font-weight: 600; }
+  .meal-log-clear:hover { text-decoration: underline; }
+  .meal-logged-scroll { max-height: 180px; overflow-y: auto; padding-right: 2px; }
+  .meal-logged-scroll::-webkit-scrollbar { width: 4px; }
+  .meal-logged-scroll::-webkit-scrollbar-thumb { background: var(--pink-light); border-radius: 100px; }
+  .meal-logged-items { display: flex; flex-direction: column; gap: 7px; }
+  .meal-logged-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 14px; background: var(--green-pale);
+    border-radius: 12px; font-size: 13px; color: var(--text-dark);
+    border: 1px solid rgba(107,143,113,0.1);
+  }
+  .meal-logged-item-details { font-size: 10px; color: var(--text-muted); display: block; margin-top: 1px; }
+  .meal-remove { cursor: pointer; color: var(--pink-soft); font-size: 18px; font-weight: 700; border: none; background: none; padding: 0 4px; }
+  .meal-remove:hover { color: red; }
+
+  /* ===== AI KONSULTAN ===== */
+  .ai-section { padding: 90px 5%; background: var(--cream-warm); }
+  .ai-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  @media (max-width: 768px) { .ai-inner { grid-template-columns: 1fr; } }
+  .ai-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px); font-weight: 700;
+    color: var(--green-dark); line-height: 1.15; margin-bottom: 14px;
+  }
+  .ai-section h2 em { font-style: italic; color: var(--pink-soft); }
+  .ai-desc { color: var(--text-muted); font-size: 15px; line-height: 1.75; margin-bottom: 28px; font-weight: 500; }
+  .ai-chat-demo {
+    background: white; border-radius: 24px; padding: 24px;
+    border: 1px solid rgba(232,164,176,0.3);
+    box-shadow: 0 8px 32px rgba(107,143,113,0.1);
+  }
+  .chat-header {
+    display: flex; align-items: center; gap: 12px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--green-pale);
+    margin-bottom: 20px;
+  }
+  .chat-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-soft), var(--green-sage));
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .chat-name { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+  .chat-status { font-size: 11px; color: var(--green-sage); display: flex; align-items: center; gap: 4px; }
+  .chat-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green-sage); display: inline-block; }
+  
+  /* Scrollable chat body */
+  .chat-messages { 
+    display: flex; flex-direction: column; gap: 14px; margin-bottom: 18px; 
+    max-height: 280px; overflow-y: auto; padding-right: 4px;
+  }
+  .chat-messages::-webkit-scrollbar { width: 5px; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--pink-light); border-radius: 10px; }
+
+  .chat-bubble {
+    max-width: 85%; padding: 12px 16px; border-radius: 18px;
+    font-size: 13px; line-height: 1.6; word-wrap: break-word;
+  }
+  .chat-bubble.user {
+    background: var(--green-sage); color: white;
+    align-self: flex-end; border-bottom-right-radius: 4px;
+  }
+  .chat-bubble.ai {
+    background: var(--pink-pale); color: var(--text-dark);
+    align-self: flex-start; border-bottom-left-radius: 4px;
+    border: 1px solid var(--pink-light);
+  }
+  .chat-bubble.ai strong { color: var(--green-dark); }
+  
+  /* Typing Indicator Element */
+  .typing-indicator {
+    display: flex; gap: 4px; padding: 12px 18px; align-self: flex-start;
+    background: #f0f0f0; border-radius: 18px; border-bottom-left-radius: 4px;
+  }
+  .typing-dot {
+    width: 6px; height: 6px; background: var(--text-muted); border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+  }
+  .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+  .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+  @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
+
+  .chat-input-row {
+    display: flex; gap: 10px;
+  }
+  .chat-input {
+    flex: 1; padding: 11px 16px; border: 1.5px solid var(--green-light);
+    border-radius: 100px; font-size: 13px; font-family: 'Nunito', sans-serif;
+    outline: none; color: var(--text-dark); background: var(--cream);
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: var(--green-sage); }
+  .chat-send-btn {
+    padding: 11px 20px; background: var(--green-sage); color: white;
+    border: none; border-radius: 100px; cursor: pointer;
+    font-size: 13px; font-weight: 600; font-family: 'Nunito', sans-serif;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .chat-send-btn:hover { background: var(--green-dark); }
+  .ai-features { display: flex; flex-direction: column; gap: 16px; }
+  .ai-feature {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: white; border-radius: 16px; padding: 18px;
+    border: 1px solid rgba(107,143,113,0.15);
+    transition: all 0.2s;
+  }
+  .ai-feature:hover { box-shadow: 0 4px 16px rgba(107,143,113,0.1); transform: translateX(4px); }
+  .ai-feature-icon { font-size: 24px; flex-shrink: 0; }
+  .ai-feature-text h4 { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+  .ai-feature-text p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--green-dark); color: rgba(255,255,255,0.55);
+    padding: 60px 5% 36px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px; margin-bottom: 44px;
+  }
+  @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer-brand img { height: 44px; margin-bottom: 14px; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 260px; }
+  .footer-slogan { font-family: 'Playfair Display', serif; font-style: italic; color: var(--pink-light); font-size: 14px; margin-bottom: 10px; }
+  .footer-col h4 { font-size: 13px; font-weight: 700; color: white; margin-bottom: 14px; letter-spacing: 0.04em; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .footer-col ul li a { text-decoration: none; color: rgba(255,255,255,0.5); font-size: 13px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--pink-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; flex-wrap: wrap; gap: 10px;
+  }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5); z-index: 999;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: white; border-radius: 28px; padding: 40px;
+    max-width: 440px; width: 90%; position: relative;
+    animation: modal-in 0.3s ease;
+  }
+  @keyframes modal-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--pink-pale); border: none; cursor: pointer;
+    font-size: 18px; display: flex; align-items: center; justify-content: center;
+    color: var(--text-mid);
+  }
+  .modal h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; color: var(--green-dark); margin-bottom: 8px;
+  }
+  .modal p { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; line-height: 1.6; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 12px; color: var(--text-mid); margin-bottom: 6px; font-weight: 700; letter-spacing: 0.03em; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 12px 16px;
+    border: 1.5px solid var(--green-light); border-radius: 12px;
+    font-size: 14px; font-family: 'Nunito', sans-serif;
+    outline: none; color: var(--text-dark); background: var(--cream);
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--green-sage); }
+  .modal-submit {
+    width: 100%; padding: 14px; background: var(--green-sage); color: white;
+    border: none; border-radius: 12px; font-size: 15px; font-weight: 700;
+    cursor: pointer; font-family: 'Nunito', sans-serif; transition: background 0.2s;
+  }
+  .modal-submit:hover { background: var(--green-dark); }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 28px; right: 28px;
+    background: var(--green-dark); color: white;
+    padding: 14px 22px; border-radius: 14px;
+    font-size: 14px; font-weight: 600; z-index: 9999;
+    transform: translateY(80px); opacity: 0;
+    transition: all 0.3s; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* FADE IN */
+  
+/* ===== MITRA UMKM ===== */
+.umkm-section{padding:90px 5%;background:linear-gradient(135deg,#eef7f0,#f7fbf8);}
+.umkm-section h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,56px);color:var(--green-dark);margin-bottom:18px}
+.umkm-section h2 em{color:var(--pink-soft);font-style:italic}
+.umkm-desc{max-width:700px;color:var(--text-mid);line-height:1.8;margin-bottom:40px}
+.umkm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px}
+.umkm-card{background:#fff;border-radius:28px;padding:28px;border:1px solid rgba(107,143,113,.15)}
+.umkm-top{display:flex;gap:24px;align-items:center}
+.umkm-logo{width:180px;height:140px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:64px;background:var(--cream);overflow:hidden}
+.umkm-menu{margin-top:18px;padding-top:16px;border-top:1px solid #e5ece7;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.umkm-tags span{background:var(--pink-pale);padding:8px 14px;border-radius:999px;font-size:13px}
+
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-text">Pretty<span>Healthy</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Tentang</a></li>
+    <li><a href="#menu">Menu Sehat</a></li>
+    <li><a href="#tracker">Calorie Tracker</a></li>
+    <li><a href="#ai">AI Konsultan</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openModal()">Hubungi Kami</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-leaf-deco">🌿</div>
+  <div class="hero-content fade-in">
+    <div class="hero-badge">Wellness & Glow</div>
+    <h1>Sip <em>Healthy</em>,<br>Glow <span class="accent">Naturally</span></h1>
+    <p class="hero-desc">Mulai perjalanan hidup sehatmu dengan kombinasi cold-pressed juice murni dan hidangan padat nutrisi yang dirancang khusus untuk pancaran energi alami tubuhmu.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">Lihat Menu Produk</a>
+      <a href="#tracker" class="btn-secondary">Hitung Kalori Sekarang</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Bahan Alami Organik</span>
+      </div>
+      <div>
+        <span class="stat-num">0%</span>
+        <span class="stat-label">Gula Tambahan & Air</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image-wrap fade-in">
+    <div class="hero-img-frame">
+      <img src="https://images.unsplash.com/photo-1610970881699-44a55b4cfd87?w=800" alt="Fresh Juice and Healthy Foods">
+      <div class="hero-img-badge">
+        <span class="dot"></span> Cold-Pressed Fresh Daily
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-section fade-in">
+  <div class="about-inner">
+    <div>
+      <div class="about-tag">Mengapa Memilih Kami</div>
+      <h2>Nutrisi Murni Tanpa <em>Kompromi</em></h2>
+      <p class="about-desc">Kami believe bahwa makanan sehat harus terasa lezat dan bekerja maksimal untuk tubuh Anda. Setiap produk Pretty Healthy dibuat segar setiap hari untuk memastikan Anda mendapatkan manfaat terbaik dari alam.</p>
+    </div>
+    <div class="about-points">
+      <div class="about-point">
+        <div class="about-point-icon">🍋</div>
+        <div class="about-point-text">
+          <h4>Sayuran & Buah Segar Pilihan</h4>
+          <p>Dipilih langsung dari perkebunan lokal yang menerapkan sistem pertanian berkelanjutan.</p>
+        </div>
+      </div>
+      <div class="about-point">
+        <div class="about-point-icon">🧪</div>
+        <div class="about-point-text">
+          <h4>Dibuat Berdasarkan Riset Gizi</h4>
+          <p>Kombinasi kalori dan makronutrisi yang terukur seimbang untuk mendukung aktivitas harian.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU SECTION -->
+<section id="menu" class="menu-section fade-in">
+  <span class="section-tag">Katalog Sehat</span>
+  <h2>Menu Pilihan <em>Pretty Healthy</em></h2>
+  <p class="section-intro">Pilih kategori hidangan di bawah ini untuk melihat menu jus segar dan makanan bernutrisi tinggi kami.</p>
+  
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="switchTab('semua')">Semua Menu</button>
+    <button class="menu-tab" onclick="switchTab('jus')">Cold-Pressed Juice</button>
+    <button class="menu-tab" onclick="switchTab('snack')">Camilan Sehat</button>
+  </div>
+
+  <div id="menuGrid" class="food-grid"></div>
+</section>
+
+
+<section id="mitra-umkm" class="umkm-section fade-in">
+  <h2>Mitra <em>UMKM</em> Sehat</h2>
+  <p class="umkm-desc">Kami bekerja sama dengan berbagai UMKM pilihan yang menyediakan makanan dan minuman sehat berkualitas untuk kamu.</p>
+  <div class="umkm-grid">
+    <div class="umkm-card">
+      <div class="umkm-top">
+        <div class="umkm-logo" style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3>Dee Gym</h3>
+          <p>Mitra kebugaran yang menyediakan fasilitas gym dan program latihan untuk mendukung gaya hidup sehat.</p>
+        </div>
+      </div>
+      <div class="umkm-menu">
+        <div class="umkm-tags"><span>Fitness</span> <span>Strength Training</span> <span>Personal Coaching</span></div>
+        <strong>🌿 Sehat</strong>
+        <a href="https://wa.me/6285266678603?text=Halo%20Ibu%20Ani%2C%20saya%20ingin%20bertanya%20tentang%20menu%20Warung%20Sehat." target="_blank" style="background:#25D366;color:white;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;">Hubungi Kami (WhatsApp)</a>
+      </div>
+    </div>
+    <div class="umkm-card">
+      <div class="umkm-top">
+        <div class="umkm-logo" style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3>Diet Food by Ibu Ani</h3>
+          <p>Menyediakan menu diet sehat, makanan bergizi seimbang, dan pilihan rendah kalori untuk mendukung pola hidup sehat.</p>
+        </div>
+      </div>
+      <div class="umkm-menu">
+        <div class="umkm-tags"><span>Nasi Merah</span> <span>Ayam Panggang</span> <span>Sayur Organik</span></div>
+        <strong>🍏 Fresh & Natural</strong>
+        
+      </div>
+    </div>
+  
+<div class="umkm-card">
+  <div class="umkm-top">
+    <div class="umkm-logo" style="overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div>
+      <h3>Toko Sirempah.id</h3>
+      <p>Menyediakan aneka jamu tradisional, minuman herbal, dan racikan rempah alami untuk menjaga kesehatan dan kebugaran tubuh.</p>
+    </div>
+  </div>
+  <div class="umkm-menu">
+    <div class="umkm-tags"><span>Jahe</span> <span>Kunyit</span> <span>Kayu Manis</span></div>
+    <strong>🌿 Rempah & Herbal</strong>
+  </div>
+</div>
+
+  </div>
+</section>
+
+
+<!-- TRACKER SECTION -->
+<section id="tracker" class="tracker-section fade-in">
+  <h2>Smart <em>Universal</em> Calorie Tracker</h2>
+  <p class="tracker-intro">Sekarang kamu bisa menghitung seluruh asupan harianmu! Pilih dari menu signature <b>Pretty Healthy</b>, database makanan umum, atau **tambahkan sendiri makanan/minuman kustommu** secara bebas di bawah ini.</p>
+  
+  <div class="tracker-layout">
+    <div class="tracker-card">
+      <div class="tracker-title">
+        <span>🥣 Tambah Asupan (Menu & Kustom)</span>
+      </div>
+      
+      <!-- Formulir Penambahan Kustom -->
+      <div class="custom-food-box">
+        <h4>✨ Tambah Makanan/Minuman Luar (Kustom)</h4>
+        <div class="custom-grid-inputs">
+          <input type="text" id="customName" placeholder="Nama Makanan (cth: Nasi Goreng)">
+          <input type="number" id="customKcal" placeholder="Kalori (kcal)" min="0">
+          <input type="number" id="customCarb" placeholder="Karbo (g)" min="0">
+          <input type="number" id="customProt" placeholder="Protein (g)" min="0">
+          <input type="number" id="customFat" placeholder="Lemak (g)" min="0">
+        </div>
+        <button class="btn-add-custom" onclick="addCustomFoodDirect()">+ Masukkan ke Tracker Hari Ini</button>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cari makanan umum atau produk Pretty Healthy... (cth: Nasi, Ayam, Detox)" oninput="filterTrackerList()">
+      </div>
+      
+      <div class="food-list-scroll">
+        <div class="food-list" id="trackerFoodList"></div>
+      </div>
+    </div>
+
+    <div class="progress-card">
+      <div class="tracker-title">📊 Total Asupan Nutrisi Harian</div>
+      <div class="ring-container">
+        <svg class="ring-svg" width="170" height="170">
+          <circle class="ring-bg" cx="85" cy="85" r="80"></circle>
+          <circle class="ring-fill" id="calRing" cx="85" cy="85" r="80"></circle>
+        </svg>
+        <div class="ring-center">
+          <div class="ring-kcal" id="totalKcal">0</div>
+          <div class="ring-label">Kcal Terpenuhi</div>
+          <div class="ring-target">Target: 2000</div>
+        </div>
+      </div>
+
+      <div class="macro-bars">
+        <div class="macro-row">
+          <div class="macro-head">
+            <span class="macro-name">Karbohidrat</span>
+            <span class="macro-val" id="carbVal">0g / 250g</span>
+          </div>
+          <div class="macro-bar-bg"><div class="macro-bar-fill" id="carbBar" style="width:0%; background:var(--pink-soft)"></div></div>
+        </div>
+        <div class="macro-row">
+          <div class="macro-head">
+            <span class="macro-name">Protein</span>
+            <span class="macro-val" id="protVal">0g / 60g</span>
+          </div>
+          <div class="macro-bar-bg"><div class="macro-bar-fill" id="protBar" style="width:0%; background:var(--green-sage)"></div></div>
+        </div>
+        <div class="macro-row">
+          <div class="macro-head">
+            <span class="macro-name">Lemak</span>
+            <span class="macro-val" id="fatVal">0g / 65g</span>
+          </div>
+          <div class="macro-bar-bg"><div class="macro-bar-fill" id="fatBar" style="width:0%; background:var(--text-dark)"></div></div>
+        </div>
+      </div>
+
+      <div class="meal-log">
+        <div class="meal-log-title">
+          <span>📋 Daftar Konsumsi Hari Ini:</span>
+          <button class="meal-log-clear" onclick="clearAllMeals()">Hapus Semua</button>
+        </div>
+        <div class="meal-logged-scroll">
+          <div id="mealLogItems" class="meal-logged-items"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI KONSULTAN -->
+<section id="ai" class="ai-section fade-in">
+  <div class="ai-inner">
+    <div>
+      <h2>AI <em>Nutrition</em> Consultant</h2>
+      <p class="ai-desc">Punya pertanyaan seputar gizi, kalori, atau program diet yang tepat? Konsultasikan langsung dengan AI kami secara personal, cepat, dan interaktif.</p>
+      
+      <div class="ai-features">
+        <div class="ai-feature">
+          <div class="ai-feature-icon">📝</div>
+          <div class="ai-feature-text">
+            <h4>Rekomendasi Menu Kustom</h4>
+            <p>Dapatkan saran produk jus dan camilan yang paling sesuai dengan target kesehatan fisikmu.</p>
+          </div>
+        </div>
+        <div class="ai-feature">
+          <div class="ai-feature-icon">⚡</div>
+          <div class="ai-feature-text">
+            <h4>Analisis Pola Makan Instan</h4>
+            <p>Ketik pola makan harianmu dan biarkan asisten cerdas mengevaluasi kecukupan nutrisinya.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-chat-demo">
+      <div class="chat-header">
+        <div class="chat-avatar">🌿</div>
+        <div>
+          <div class="chat-name">Pretty Healthy AI Konsultan</div>
+          <div class="chat-status">Online sekarang</div>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-bubble ai">Halo! Aku AI Konsultan Gizi Pretty Healthy 🌸 Ada yang bisa aku bantu untuk perjalanan diet sehatmu hari ini? Kamu juga bisa tanya analisis kalori dari apa yang sudah kamu makan di tracker atas lho!</div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Tanyakan gizi, menu, atau ketik 'analisis'..." onkeydown="if(event.key === 'Enter') sendToAI()">
+        <button class="chat-send-btn" onclick="sendToAI()">Kirim Chat</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo-text" style="color:white; margin-bottom:12px">Pretty<span>Healthy</span></div>
+      <p class="footer-slogan">Sip Healthy, Glow Naturally</p>
+      <p>Menyediakan asupan nutrisi murni terbaik demi mendukung gaya hidup sehat dan kecantikan alami Anda.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigasi</h4>
+      <ul>
+        <li><a href="#about">Tentang Kami</a></li>
+        <li><a href="#menu">Menu Sehat</a></li>
+        <li><a href="#tracker">Calorie Tracker</a></li>
+        <li><a href="#ai">AI Konsultan</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <ul>
+        <li><a href="#">Instagram: @prettyhealthy.id</a></li>
+        <li><a href="#">Lokasi: Jambi, Indonesia</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Pretty Healthy. Hak Cipta Dilindungi.</div>
+  </div>
+</footer>
+
+<!-- MODAL OVERLAY -->
+<div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3>Hubungi Pemesanan</h3>
+    <p>Silakan isi data diri Anda di bawah ini untuk terhubung langsung dengan admin WhatsApp pemesanan produk.</p>
+    <div class="form-group">
+      <label>Nama Lengkap</label>
+      <input type="text" id="formNama" placeholder="Masukkan nama Anda">
+    </div>
+    <div class="form-group">
+      <label>Pilih Produk Utama</label>
+      <select id="formProduk">
+        <option value="Detox Green Juice">Detox Green Juice</option>
+        <option value="Glowing Skin Juice">Glowing Skin Juice</option>
+        <option value="Fiber Boost Juice">Fiber Boost Juice</option>
+        <option value="Mixed Nuts Snack">Mixed Nuts Snack</option>
+        <option value="Pisang Bakar Coklat">Pisang Bakar Coklat</option>
+      </select>
+    </div>
+    <button class="modal-submit" onclick="submitOrder()">Kirim via WhatsApp</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<!-- JAVASCRIPT -->
+<script>
+// Menu Utama Produk Pretty Healthy
+const productMenus = [
+  { name: 'Detox Green', emoji: '🥒', kcal: 65, carb: 14, prot: 2, fat: 0, cat: 'jus', tag: 'Detox Alami', desc: 'Perpaduan seledri murni, ketimun segar, apel hijau, dan perasan lemon.', isProduct: true },
+  { name: 'Glowing Skin', emoji: '🍓', kcal: 85, carb: 19, prot: 1, fat: 0, cat: 'jus', tag: 'Antioksidan', desc: 'Kombinasi stroberi segar, wortel manis, dan buah tomat kaya vitamin C.', isProduct: true },
+  { name: 'Fiber Boost', emoji: '🍍', kcal: 95, carb: 22, prot: 2, fat: 0, cat: 'jus', tag: 'Serat Tinggi', desc: 'Campuran buah nanas manis, sayur caisim organik, dan perasan jeruk nipis.', isProduct: true },
+  { name: 'Mixed Nuts', emoji: '🥜', kcal: 164, carb: 6, prot: 6, fat: 14, cat: 'snack', tag: 'Good Fat', desc: 'Kombinasi kacang almond, walnut, dan kacang cashew panggang.', isProduct: true },
+  { name: 'Pisang Bakar Coklat', emoji: '🍌', kcal: 130, carb: 31, prot: 2, fat: 2, cat: 'snack', tag: 'Dessert Sehat', desc: 'Pisang bakar madu dengan taburan dark chocolate murni.', isProduct: true }
+];
+
+// Database Makanan & Minuman Umum Indonesia untuk Tracker Universal
+const globalCommonMenus = [
+  { name: 'Nasi Putih (1 Piring)', emoji: '🍚', kcal: 204, carb: 45, prot: 4, fat: 0.5, isProduct: false },
+  { name: 'Nasi Goreng Ayam', emoji: '🍳', kcal: 330, carb: 40, prot: 12, fat: 14, isProduct: false },
+  { name: 'Ayam Goreng', emoji: '🍗', kcal: 260, carb: 0, prot: 24, fat: 17, isProduct: false },
+  { name: 'Telur Dadar / Mata Sapi', emoji: '🍳', kcal: 90, carb: 0.5, prot: 7, fat: 7, isProduct: false },
+  { name: 'Tahu / Tempe Goreng', emoji: '🥠', kcal: 75, carb: 3, prot: 5, fat: 5, isProduct: false },
+  { name: 'Roti Tawar (2 Lembar)', emoji: '🍞', kcal: 150, carb: 28, prot: 5, fat: 1.5, isProduct: false },
+  { name: 'Susu Sapi UHT (200ml)', emoji: '🥛', kcal: 120, carb: 11, prot: 6, fat: 6, isProduct: false },
+  { name: 'Kopi Susu Gula Aren', emoji: '☕', kcal: 180, carb: 26, prot: 3, fat: 7, isProduct: false },
+  { name: 'Mie Instan Kuah/Goreng', emoji: '🍜', kcal: 380, carb: 54, prot: 8, fat: 14, isProduct: false },
+  { name: 'Bakso Sapi Semangkuk', emoji: '🍲', kcal: 320, carb: 24, prot: 18, fat: 16, isProduct: false },
+  { name: 'Gado-Gado Seporsi', emoji: '🥗', kcal: 295, carb: 32, prot: 10, fat: 14, isProduct: false }
+];
+
+// Gabungan awal database pencarian tracker
+let trackerDatabase = [...productMenus, ...globalCommonMenus];
+let userMeals = [];
+
+// Variabel Global Gizi Tracker Aktif
+let currentTotalKcal = 0;
+let currentTotalCarb = 0;
+let currentTotalProt = 0;
+let currentTotalFat = 0;
+
+function renderMenuGrid(category) {
+  const grid = document.getElementById('menuGrid');
+  grid.innerHTML = '';
+  const filtered = category === 'semua' ? productMenus : productMenus.filter(m => m.cat === category);
+  filtered.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'food-card fade-in visible';
+    card.innerHTML = `
+      <div class="food-card-thumb"><span>${m.emoji}</span><span class="food-card-badge">${m.tag}</span></div>
+      <div class="food-card-body">
+        <h4>${m.name}</h4><p>${m.desc}</p>
+        <div class="food-card-meta"><span class="food-card-kcal">${m.kcal} Kcal</span><span class="food-card-tag">${m.cat === 'jus' ? 'Juice' : 'Snack'}</span></div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function switchTab(category) {
+  document.querySelectorAll('.menu-tab').forEach(btn => {
+    btn.classList.remove('active');
+    if(btn.getAttribute('onclick').includes(category)) btn.classList.add('active');
+  });
+  renderMenuGrid(category);
+}
+
+// Render list pencarian tracker
+function renderTrackerFoodList(filterText = '') {
+  const listContainer = document.getElementById('trackerFoodList');
+  listContainer.innerHTML = '';
+  const query = filterText.toLowerCase().trim();
+  
+  const filtered = trackerDatabase.filter(m => m.name.toLowerCase().includes(query));
+  
+  if(filtered.length === 0) {
+    listContainer.innerHTML = '<div style="font-size:13px; color:var(--text-muted); text-align:center; padding:20px;">Menu tidak ditemukan. Gunakan box kustom di atas untuk memasukkan makananmu secara bebas! 💡</div>';
+    return;
+  }
+
+  filtered.forEach(m => {
+    const originalIndex = trackerDatabase.findIndex(item => item.name === m.name);
+    const item = document.createElement('div');
+    item.className = 'food-item';
+    
+    // Tag pembeda asal makanan
+    const originTag = m.isProduct 
+      ? '<span class="food-origin-tag" style="background:var(--green-pale); color:var(--green-dark)">Pretty Healthy</span>' 
+      : (m.isCustom ? '<span class="food-origin-tag custom">Kustom Anda</span>' : '<span class="food-origin-tag">Umum</span>');
+
+    item.innerHTML = `
+      <div class="food-item-info">
+        <span class="food-emoji-sm">${m.emoji || '🍽️'}</span>
+        <div>
+          <div class="food-name">${m.name} ${originTag}</div>
+          <div class="food-macro">Karb: ${m.carb}g • Prot: ${m.prot}g • Lemak: ${m.fat}g</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px">
+        <span class="food-kcal">${m.kcal} kcal</span>
+        <button class="add-btn" onclick="addFoodToLog(${originalIndex})">+</button>
+      </div>
+    `;
+    listContainer.appendChild(item);
+  });
+}
+
+function filterTrackerList() { 
+  renderTrackerFoodList(document.getElementById('searchInput').value); 
+}
+
+// Tambah makanan kustom sepenuhnya oleh user secara real-time
+function addCustomFoodDirect() {
+  const nameInput = document.getElementById('customName');
+  const kcalInput = document.getElementById('customKcal');
+  const carbInput = document.getElementById('customCarb');
+  const protInput = document.getElementById('customProt');
+  const fatInput = document.getElementById('customFat');
+
+  const name = nameInput.value.trim();
+  const kcal = parseInt(kcalInput.value) || 0;
+  const carb = parseInt(carbInput.value) || 0;
+  const prot = parseInt(protInput.value) || 0;
+  const fat = parseInt(fatInput.value) || 0;
+
+  if (!name) {
+    alert('Silakan masukkan nama makanan/minuman kustom Anda terlebih dahulu!');
+    return;
+  }
+
+  // Objek item baru kustom
+  const customItem = {
+    name: name,
+    emoji: '🍳',
+    kcal: kcal,
+    carb: carb,
+    prot: prot,
+    fat: fat,
+    isProduct: false,
+    isCustom: true
+  };
+
+  // Masukkan langsung ke log konsumsi user dan database lokal tracker agar tersimpan
+  trackerDatabase.unshift(customItem); 
+  userMeals.push(customItem);
+  
+  // Reset input form kustom
+  nameInput.value = '';
+  kcalInput.value = '';
+  carbInput.value = '';
+  protInput.value = '';
+  fatInput.value = '';
+
+  updateTrackerCalculation();
+  filterTrackerList();
+  showToast(`✨ Sukses menambahkan ${name} ke hitungan hari ini!`);
+}
+
+function addFoodToLog(index) {
+  userMeals.push(trackerDatabase[index]);
+  updateTrackerCalculation();
+  showToast(`✅ ${trackerDatabase[index].name} dimasukkan!`);
+}
+
+function removeFoodFromLog(index) {
+  const nameRemoved = userMeals[index].name;
+  userMeals.splice(index, 1);
+  updateTrackerCalculation();
+  showToast(`🗑️ ${nameRemoved} dihapus.`);
+}
+
+function clearAllMeals() {
+  if (userMeals.length === 0) return;
+  if (confirm('Apakah Anda yakin ingin mengosongkan semua daftar konsumsi hari ini?')) {
+    userMeals = [];
+    updateTrackerCalculation();
+    showToast('🧹 Log konsumsi berhasil dibersihkan.');
+  }
+}
+
+function updateTrackerCalculation() {
+  currentTotalKcal = 0; currentTotalCarb = 0; currentTotalProt = 0; currentTotalFat = 0;
+  userMeals.forEach(m => { 
+    currentTotalKcal += m.kcal; 
+    currentTotalCarb += m.carb; 
+    currentTotalProt += m.prot; 
+    currentTotalFat += m.fat; 
+  });
+
+  document.getElementById('totalKcal').textContent = currentTotalKcal;
+  document.getElementById('carbVal').textContent = `${currentTotalCarb}g / 250g`;
+  document.getElementById('protVal').textContent = `${currentTotalProt}g / 60g`;
+  document.getElementById('fatVal').textContent = `${currentTotalFat}g / 65g`;
+
+  document.getElementById('carbBar').style.width = `${Math.min((currentTotalCarb/250)*100, 100)}%`;
+  document.getElementById('protBar').style.width = `${Math.min((currentTotalProt/60)*100, 100)}%`;
+  document.getElementById('fatBar').style.width = `${Math.min((currentTotalFat/65)*100, 100)}%`;
+
+  const pct = Math.min(currentTotalKcal / 2000, 1);
+  document.getElementById('calRing').style.strokeDashoffset = 502 - (502 * pct);
+
+  const logContainer = document.getElementById('mealLogItems');
+  logContainer.innerHTML = '';
+  
+  if(userMeals.length === 0) {
+    logContainer.innerHTML = '<div style="font-size:12px; color:var(--text-muted); text-align:center; padding:15px; background:var(--cream); border-radius:10px;">Belum ada makanan yang dikonsumsi hari ini.</div>';
+    return;
+  }
+
+  userMeals.forEach((m, i) => {
+    const div = document.createElement('div');
+    div.className = 'meal-logged-item';
+    div.innerHTML = `
+      <div>
+        <strong>${m.emoji || '🍽️'} ${m.name}</strong>
+        <span class="meal-logged-item-details">${m.kcal} kcal | K:${m.carb}g P:${m.prot}g L:${m.fat}g</span>
+      </div>
+      <button class="meal-remove" onclick="removeFoodFromLog(${i})">&times;</button>
+    `;
+    logContainer.appendChild(div);
+  });
+}
+
+// ==========================================
+// ENGINE LOKAL AI KONSULTAN PRETTY HEALTHY
+// ==========================================
+function sendToAI() {
+  const inputEl = document.getElementById('chatInput');
+  const query = inputEl.value.trim();
+  if (!query) return;
+
+  // Render teks obrolan user ke dalam kotak chat
+  appendChatBubble(query, 'user');
+  inputEl.value = '';
+
+  // Buat dan tampilkan efek animasi "Sedang Mengetik..."
+  const indicator = appendTypingIndicator();
+
+  // Menstimulasi respons cerdas AI secara asinkron (durasi 1.2 detik agar terasa natural)
+  setTimeout(() => {
+    indicator.remove(); // hapus indikator mengetik
+    const responseText = generateLocalAIResponse(query);
+    appendChatBubble(responseText, 'ai');
+  }, 1200);
+}
+
+function appendChatBubble(text, sender) {
+  const container = document.getElementById('chatMessages');
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${sender}`;
+  bubble.innerHTML = text;
+  container.appendChild(bubble);
+  // Auto-scroll chat ke posisi terbawah
+  container.scrollTop = container.scrollHeight;
+}
+
+function appendTypingIndicator() {
+  const container = document.getElementById('chatMessages');
+  const indicator = document.createElement('div');
+  indicator.className = 'typing-indicator';
+  indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  container.appendChild(indicator);
+  container.scrollTop = container.scrollHeight;
+  return indicator;
+}
+
+function generateLocalAIResponse(input) {
+  const str = input.toLowerCase().trim();
+  
+  // 1. Fitur Integrasi Real-Time dengan Tracker Kalori (Kata Kunci Analisis/Evaluasi)
+  if (str.includes('analisis') || str.includes('evaluasi') || str.includes('asupan') || str.includes('makananku') || str.includes('tracker')) {
+    if (userMeals.length === 0) {
+      return "Log Tracker kamu hari ini **masih kosong** nih 📋 Coba deh masukkan menu sarapan atau produk jusmu di section *Calorie Tracker* di atas, lalu minta aku untuk 'analisis' lagi. Aku bakal bantu hitung kecukupan gizinya!";
+    }
+    
+    let evaluasiKalori = "";
+    if (currentTotalKcal < 1200) {
+      evaluasiKalori = "Asupan energimu masih cukup rendah untuk hari ini. Jangan lupa penuhi energi tubuh dengan gizi seimbang ya!";
+    } else if (currentTotalKcal >= 1200 && currentTotalKcal <= 2100) {
+      evaluasiKalori = "Jumlah yang sangat ideal untuk menjaga metabolisme tubuh tetap prima dan seimbang ✨";
+    } else {
+      evaluasiKalori = "Wah, asupan kalorimu sudah melebihi batas rata-rata harian (2000 kcal). Coba imbangi dengan aktivitas fisik atau segelas **Detox Green Juice** untuk mendetoks tubuh.";
+    }
+
+    return `📊 **Hasil Analisis Nutrisimu Hari Ini:**<br><br>` +
+           `• Total Kalori: **${currentTotalKcal} kcal** / 2000 kcal<br>` +
+           `• Karbohidrat: **${currentTotalCarb}g** | Protein: **${currentTotalProt}g** | Lemak: **${currentTotalFat}g**<br><br>` +
+           `**Catatan Ahli Gizi AI:** ${evaluasiKalori}<br><br>` +
+           `*Tips:* Pastikan rasio proteinmu tercapai untuk menjaga metabolisme otot. Jika ingin camilan rendah kalori, kamu bisa coba **Pisang Bakar Coklat (130 kcal)** dari Pretty Healthy!`;
+  }
+
+  // 2. Deteksi Pertanyaan Spesifik tentang Kulit / Glow / Jerawat
+  if (str.includes('kulit') || str.includes('glow') || str.includes('jerawat') || str.includes('kusam') || str.includes('muka') || str.includes('wajah')) {
+    return "🌸 **Tips Kulit Glowing & Bebas Jerawat:**<br><br>" +
+           "Untuk kulit wajah yang bersih berkilau alami (*natural glow*), tubuh membutuhkan antioksidan tinggi seperti Vitamin C dan Lycopene. <br><br>" +
+           "Kami sangat merekomendasikan **Glowing Skin Juice (85 Kcal)** 🍓 yang terbuat dari campuran stroberi segar dan tomat organik murni tanpa tambahan air atau gula. Kandungan antioksidannya membantu menangkal radikal bebas dan mempercepat regenerasi sel kulit dari dalam. Jangan lupa kurangi konsumsi makanan tinggi minyak dan gula buatan ya!";
+  }
+
+  // 3. Deteksi Pertanyaan Spesifik tentang Penurunan Berat Badan / Diet / Kurus / Defisit
+  if (str.includes('diet') || str.includes('turun') || str.includes('berat') || str.includes('kurus') || str.includes('gemuk') || str.includes('defisit')) {
+    return "⚖️ **Panduan Diet & Penurunan Berat Badan:**<br><br>" +
+           "Kunci utama penurunan berat badan yang sehat adalah melakukan **Defisit Kalori** yang aman namun padat nutrisi agar tubuh tidak lemas.<br><br>" +
+           "Cobalah ganti camilan soremu dengan **Fiber Boost Juice (95 kcal)** 🍍 yang tinggi serat agar kenyang lebih lama, atau **Mixed Nuts (164 kcal)** yang kaya lemak baik (*good fat*) untuk mengontrol nafsu makan. Jangan lupa gunakan modul **Calorie Tracker** di atas untuk memastikan total asupan harianmu tetap terkontrol!";
+  }
+
+  // 4. Deteksi Pertanyaan tentang Jus / Menu / Produk / Rekomendasi
+  if (str.includes('jus') || str.includes('produk') || str.includes('menu') || str.includes('rekomendasi') || str.includes('varian')) {
+    return "🏊 **Katalog & Rekomendasi Menu Signature Pretty Healthy:**<br><br>" +
+           "• **Detox Green (65 kcal)** 🥒: Sangat baik diminum pagi hari untuk melancarkan pencernaan, membuang racun, dan meredakan kembung.<br>" +
+           "• **Glowing Skin (85 kcal)** 🍓: Kaya Vitamin C dan Lycopene untuk mencerahkan kulit serta menjaga elastisitasnya.<br>" +
+           "• **Fiber Boost (95 kcal)** 🍍: Tinggi serat alami untuk mendukung kelancaran sistem pencernaan dan program diet.<br>" +
+           "• **Mixed Nuts & Pisang Bakar**: Opsi camilan sehat padat nutrisi rendah kalori.<br><br>" +
+           "Apakah kamu memiliki target kesehatan tertentu seperti kesehatan kulit atau penurunan berat badan? Beritahu aku agar bisa memberikan saran terbaik!";
+  }
+
+  // 5. Deteksi Pertanyaan tentang Detoks / Pencernaan / Buang Air / Racun
+  if (str.includes('detox') || str.includes('detoks') || str.includes('pencernaan') || str.includes('sembelit') || str.includes('racun') || str.includes('perut')) {
+    return "🌿 **Solusi Detoks & Kesehatan Pencernaan:**<br><br>" +
+           "Sistem pencernaan yang bersih adalah kunci penyerapan gizi yang optimal. Untuk membantu membuang sisa metabolisme (toksin), menu **Detox Green Juice (65 kcal)** 🥒 kami yang memadukan seledri murni, ketimun, dan lemon adalah pilihan utama.<br><br>" +
+           "Jus ini bekerja alami menghidrasi tubuh, menyeimbangkan pH pencernaan, dan mengurangi rasa begah di perut. Sangat disarankan diminum secara rutin saat perut kosong di pagi hari.";
+  }
+
+  // 6. Deteksi Salam / Greeting
+  if (str.includes('halo') || str.includes('hai') || str.includes('pagi') || str.includes('siang') || str.includes('sore') || str.includes('malam') || str.includes('assalamualaikum')) {
+    return "Halo! Selamat datang di AI Konsultan Gizi Pretty Healthy 🌸 Aku siap membantumu menjawab pertanyaan seputar diet, kesehatan kulit, kecukupan gizi, hingga merekomendasikan menu jus yang tepat. Apa yang ingin kamu diskusikan hari ini?";
+  }
+
+  // 7. Deteksi Ucapan Terima Kasih
+  if (str.includes('terima kasih') || str.includes('thanks') || str.includes('makasih') || str.includes('suwun') || str.includes('oke')) {
+    return "Sama-sama! Selalu semangat ya untuk menjaga pola hidup sehatnya. Ingat selalu moto kami: *Sip Healthy, Glow Naturally!* 🌿 Jika ada hal lain yang ingin ditanyakan nanti, langsung chat aku saja ya.";
+  }
+
+  // 8. JAWABAN DINAMIS UNIVERSAL (Jika pertanyaan tidak masuk kategori di atas, AI membedah isi teksnya secara kontekstual)
+  return `💡 **Tanggapan Mengenai "${input}":**<br><br>` +
+         `Pertanyaan kamu seputar *"${input}"* sangat bagus! Dalam prinsip kesehatan *Pretty Healthy*, segala hal yang berkaitan dengan nutrisi sebaiknya dipenuhi dari bahan makanan murni, utuh (whole foods), dan tanpa pemanis buatan.<br><br>` +
+         `Untuk mendukung target spesifikmu tersebut, pastikan kamu mencukupi hidrasi harian, mengonsumsi serat dari sayur hijau seperti pada **Detox Green Juice**, serta menjaga keseimbangan kalori makro tubuh.<br><br>` +
+         `Kamu juga bisa memasukkan apa saja makananmu hari ini ke dalam **Calorie Tracker** di atas, lalu ketik **"analisis"** di kolom chat ini untuk mendapatkan evaluasi kecukupan gizinya secara instan! ✨`;
+}
+
+function openModal() { document.getElementById('modalOverlay').classList.add('active'); }
+function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
+
+function submitOrder() {
+  const nama = document.getElementById('formNama').value.trim();
+  const produk = document.getElementById('formProduk').value;
+  if(!nama) { alert('Harap masukkan nama Anda!'); return; }
+  window.open(`https://wa.me/6289630592788?text=${encodeURIComponent(`Halo Admin Pretty Healthy, saya ${nama} ingin memesan: ${produk}`)}`, '_blank');
+  closeModal();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+
+function orderMitra(nomor, namaToko) {
+    const pesan = `Halo ${namaToko}, saya ingin memesan menu sehat Anda.`;
+    window.open(`https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`, '_blank');
+}
+
+
+// Inisialisasi awal
+renderMenuGrid('semua');
+renderTrackerFoodList();
+updateTrackerCalculation();
+</script>
+</body>
+</html>
+
+<!-- WhatsApp Bu Hani: 085266678603 (wa.me/6285266678603) -->
